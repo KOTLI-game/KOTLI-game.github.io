@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOTLI Game Download</title>
+    <title>Download Your File</title>
 </head>
 <body>
     <h1>Your Download is Ready</h1>
-    <p>If your download does not start automatically, <a href="KOTLI_windows.zip">click here to download the file</a>.</p>
+    <p id="message"></p>
+    <p id="downloadLink"></p>
 
     <script>
+        function getOS() {
+            let platform = window.navigator.userAgentData.platform,
+                macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+                windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+                linuxPlatforms = ['Linux', 'X11'];
+
+            if (macosPlatforms.includes(platform)) {
+                return 'MacOS';
+            } else if (windowsPlatforms.includes(platform)) {
+                return 'Windows';
+            } else if (linuxPlatforms.includes(platform)) {
+                return 'Linux';
+            } else {
+                return 'Unknown';
+            }
+        }
+
         window.onload = function() {
-            window.location.href = 'KOTLI_windows.zip';
+            let os = getOS();
+            let messageElement = document.getElementById('message');
+            let downloadLinkElement = document.getElementById('downloadLink');
+
+            if (os === 'Linux') {
+                messageElement.textContent = 'Your download will start shortly.';
+                downloadLinkElement.innerHTML = '<a href="KOTLI_linux.zip">Click here if the download does not start automatically.</a>';
+                window.location.href = 'KOTLI_linux.zip';
+            } else if (os === 'Windows') {
+                messageElement.textContent = 'Your download will start shortly.';
+                downloadLinkElement.innerHTML = '<a href="KOTLI_windows.zip">Click here if the download does not start automatically.</a>';
+                window.location.href = 'KOTLI_windows.zip';
+            } else if (os === 'MacOS') {
+                messageElement.textContent = 'Sorry, macOS is not currently supported.';
+            } else {
+                messageElement.textContent = 'Your operating system is not supported.';
+            }
         };
     </script>
 </body>
