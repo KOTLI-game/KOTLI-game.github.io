@@ -4,19 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            Download Your File
+            Download KOTLI
         </title>
     </head>
     <body
         style="background-image: linear-gradient(to right, #2c75b9, #003a91);">
         <div style="display: flex; justify-content: center;">
-            <h1>
-                Your Download is Ready
-            </h1>
+            <h1 id="downloadMessage">
+		Thank you for downloading KOTLI
+	    </h1>
         </div>
         <h2>
             <div style="display: flex; justify-content: center;">
-                <p id="downloadLink"></p>
+                <div id="downloadLink"></div>
             </div>
             <div style="display: flex; justify-content: center;">
 
@@ -53,9 +53,15 @@
         }
 
         window.onload = function() {
-            let os = getOS();
-            let messageElement = document.getElementById('message');
+            let messageElement = document.getElementById('downloadMessage');
             let downloadLinkElement = document.getElementById('downloadLink');
+	    try {
+            	var os = getOS();
+	    }
+	    catch{
+                messageElement.textContent = 'Your operating system is not supported.';
+		return;
+	    }
 
             if (os === 'Linux') {
                 downloadLinkElement.innerHTML = '<a href="KOTLI_linux.zip" style="color: #ffffff;">Click here if the download does not start automatically.</a>';
