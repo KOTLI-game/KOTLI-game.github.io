@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Your File</title>
-</head>
-<body>
-    <h1>Your Download is Ready</h1>
-    <p id="message"></p>
-    <p id="downloadLink"></p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Download Your File
+        </title>
+    </head>
+    <body
+        style="background-image: linear-gradient(to right, #2c75b9, #003a91);">
+        <div style="display: flex; justify-content: center;">
+            <h1>
+                Your Download is Ready
+            </h1>
+        </div>
+        <h2>
+            <div style="display: flex; justify-content: center;">
+                <p id="downloadLink"></p>
+            </div>
+            <div style="display: flex; justify-content: center;">
 
-    <script>
+                <a href="platforms.html" style="color: #ffffff">
+                    Other platforms
+                </a>
+
+            </div>
+        </h2>
+        <h3>
+            <div style="display: flex; justify-content: center;">
+                <a href="/" style="color: #ffffff;">
+                    Back
+                </a>
+            </div>
+        </h3>
+
+        <script>
         function getOS() {
             let platform = window.navigator.userAgentData.platform,
                 macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
@@ -34,12 +58,10 @@
             let downloadLinkElement = document.getElementById('downloadLink');
 
             if (os === 'Linux') {
-                messageElement.textContent = 'Your download will start shortly.';
-                downloadLinkElement.innerHTML = '<a href="KOTLI_linux.zip">Click here if the download does not start automatically.</a>';
+                downloadLinkElement.innerHTML = '<a href="KOTLI_linux.zip" style="color: #ffffff;">Click here if the download does not start automatically.</a>';
                 window.location.href = 'KOTLI_linux.zip';
             } else if (os === 'Windows') {
-                messageElement.textContent = 'Your download will start shortly.';
-                downloadLinkElement.innerHTML = '<a href="KOTLI_windows.zip">Click here if the download does not start automatically.</a>';
+                downloadLinkElement.innerHTML = '<a href="KOTLI_windows.zip" style="color: #ffffff;">Click here if the download does not start automatically.</a>';
                 window.location.href = 'KOTLI_windows.zip';
             } else if (os === 'MacOS') {
                 messageElement.textContent = 'Sorry, macOS is not currently supported.';
@@ -48,5 +70,5 @@
             }
         };
     </script>
-</body>
+    </body>
 </html>
